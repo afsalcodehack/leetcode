@@ -1,4 +1,3 @@
-#
 def comb(arr, l, p, temp):
     if l == len(temp):
         print(temp)
