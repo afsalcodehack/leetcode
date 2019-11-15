@@ -9,6 +9,6 @@ def comb(arr, l, p, temp):
         comb(arr, l, i + 1, temp)
         del temp[-1]
 
-val = [-1, 0, 1, 2,3,4]
+val = [-1, 0, 1, 2,-1,-4]
 t = [] * 3
 comb(val, 3, 0, t)
