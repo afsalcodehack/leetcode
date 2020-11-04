@@ -1,9 +1,15 @@
 class Solution(object):
     def isValid(self, s):
         openP = {
-            "{": "}",
-            "[": "]",
-            "(": ")"
+            "{": True,
+            "[": True,
+            "(": True
+        }
+
+        closeP = {
+            "}": "{",
+            "]": "[",
+            ")": "("
         }
 
         st = []
@@ -11,15 +17,17 @@ class Solution(object):
             if i in openP:
                 st.append(i)
             else:
-                if not st:
+                if len(st) > 0:
                     c = st.pop()
-                    close = openP.get(c)
-                    if i != close:
+                    close = closeP.get(i)
+                    if c != close:
                         return False
+                else:
+                    return False
         if len(st) != 0:
             return False
         return True
 
 
 service = Solution()
-print(service.isValid("(()){}"))
+print(service.isValid("{{"))

@@ -1,17 +1,20 @@
-def decode_ways(nums, result, start, end):
-    if len(nums) == end:
-        print(result)
-        return
+class Solution:
+    result = []
 
-    result.append(nums[start:end + 1])
+    def decode_ways(self, nums, _str, i):
+        if len(nums) == i:
+            print(self.result)
+            return
 
-    decode_ways(nums, result, start + 1, start + 1)
+        self.result.append(_str)
 
-    result = result[:-1]
+        self.decode_ways(nums, nums[i], i + 1)
 
-    if end <= len(nums)-2:
-        decode_ways(nums, result, start + 1, start + 2)
+        self.result = self.result[:-1]
+
+        if i < len(nums) - 2:
+            self.decode_ways(nums, nums[i:i+2], i+2)
 
 
-res = []
-decode_ways("1234", res, 0, 0)
+service = Solution()
+service.decode_ways("1234", '', 0)
